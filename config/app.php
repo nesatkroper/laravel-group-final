@@ -2,6 +2,15 @@
 
 return [
 
+    // 'providers' => [
+    //     Intervention\Image\ImageServiceProvider::class,
+    //     Spatie\LaravelImageOptimizer\ImageOptimizerServiceProvider::class,
+    // ],
+    // 'aliases' => [
+    //     'Image' => Intervention\Image\Facades\Image::class,
+    // ],
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -122,5 +131,6 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
 
 ];

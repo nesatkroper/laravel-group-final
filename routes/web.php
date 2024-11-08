@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StudentPrimaryInfoController;
 use Illuminate\Support\Facades\Route as ro;
 
@@ -15,3 +16,5 @@ ro::get('/lang', [LanguageController::class, 'setLang'])->name('lang');
 ro::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 ro::resource('/student', StudentPrimaryInfoController::class);
+
+ro::resource('/staff', StaffController::class);
