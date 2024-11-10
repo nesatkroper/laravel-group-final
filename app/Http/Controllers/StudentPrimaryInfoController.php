@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SClass;
 use App\Models\StudentPrimaryInfo;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,8 @@ class StudentPrimaryInfoController extends Controller
     public function create()
     {
         //
-        return view('students.create');
+        $class = SClass::all();
+        return view('students.create', compact('class'));
     }
 
     /**

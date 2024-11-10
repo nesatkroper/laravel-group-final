@@ -188,12 +188,16 @@
               __("student.class")
             }}</label>
             <div class="input-group mb-3">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="C-100"
-                name="class"
-              />
+              <select class="form-select" name="subject" required>
+                <option selected disabled value="">
+                  {{ __("student.class") }}
+                  @foreach($class as $c)
+                </option>
+                <option value="{{$c->class_id}}">
+                  {{$c->name}}
+                </option>
+                @endforeach
+              </select>
             </div>
           </div>
         </div>

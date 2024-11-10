@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Department;
-use App\Models\SClass;
+use App\Models\Major;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class MajorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +13,6 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $class = SClass::orderBy('created_at', 'asc')->get();
-        $department = Department::orderBy('created_at', 'asc')->get();
-        // return view('category.index', compact(['class', 'department']));
-        return response()->json([
-            'msg' => 'success',
-            'data' => $class
-        ]);
     }
 
     /**
@@ -38,12 +29,23 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        try {
+            Major::create([
+                'name' => $request->name,
+                'code' => $request->code,
+                'des' => $request->des,
+            ]);
+
+            return redirect()->route('cate.index')->with('create', 'Class created successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Major $major)
     {
         //
     }
@@ -51,7 +53,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Major $major)
     {
         //
     }
@@ -59,7 +61,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Major $major)
     {
         //
     }
@@ -67,7 +69,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Major $major)
     {
         //
     }
