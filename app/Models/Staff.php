@@ -9,5 +9,18 @@ class Staff extends Model
     //
     protected $table = 'staff';
     protected $primaryKey = 'staff_id';
-    protected $fillable = ['name', 'photo'];
+    protected $fillable = [
+        'image',
+        'fname',
+        'lname',
+        'gender',
+        'dob',
+        'phone',
+        'email',
+        'department',
+        'salary',
+        'address',
+        'payment',
+        'status',
+    ];
 }

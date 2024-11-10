@@ -15,8 +15,12 @@ class StaffController extends Controller
     public function index()
     {
         //
-        $staff = Staff::all();
-        return view('staffs.index', compact('staff'));
+        try {
+            $staff = Staff::orderBy('created_at', 'desc')->get();
+            return view('staffs.index', compact('staff'));
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -35,25 +39,30 @@ class StaffController extends Controller
     {
         //
         try {
+            $filename = null;
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $file = $request->file('image');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time() . '.' . $extension;
                 $file->move('uploads/staff/', $filename);
-
-                $img = ImageManager::imagick()->read($file);
-                $img->resize(300, 300);
-
-                $staffs = Staff::create([
-                    'name' => $request->name,
-                    'photo' => $filename,
-                ]);
-
-
-                if ($staffs) {
-                    return redirect()->route('staff.index')->with('success', 'Staff created successfully');
-                } else return;
             }
+
+            Staff::create([
+                'image' => $filename,
+                'fname' => $request->fname,
+                'lname' => $request->lname,
+                'gender' => $request->gender,
+                'dob' => $request->dob,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'department' => $request->department,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'payment' => 'pending',
+                'status' => 'active',
+            ]);
+
+            return redirect()->route('staff.index')->with('success', 'Staff created successfully');
         } catch (\Exception $e) {
             dd($e);
         }
@@ -70,24 +79,73 @@ class StaffController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Staff $staff)
+    public function edit($staff)
     {
         //
+        try {
+            $staff = Staff::findOrFail($staff);
+            return view('staffs.edit', compact('staff'));
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Staff $staff)
+    public function update(Request $request,  $staff)
     {
         //
+        try {
+            $staff = Staff::findOrFail($staff);
+            $filename = $staff->image;
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                if (file_exists(public_path('uploads/staff/' . $staff->image)))
+                    unlink(public_path('uploads/staff/' . $staff->image));
+
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('uploads/staff/', $filename);
+            }
+
+            $staff->update([
+                'image' => $filename,
+                'fname' => $request->fname,
+                'lname' => $request->lname,
+                'gender' => $request->gender,
+                'dob' => $request->dob,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'department' => $request->department,
+                'salary' => $request->salary,
+                'address' => $request->address,
+                'payment' => 'pending',
+                'status' => 'active',
+            ]);
+
+            return redirect()->route('staff.index')->with('success', 'Staff created successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Staff $staff)
+    public function destroy($staff)
     {
         //
+        try {
+            $staff = Staff::findOrFail($staff);
+            if (file_exists(public_path('uploads/staff/' . $staff->image)))
+                unlink(public_path('uploads/staff/' . $staff->image));
+
+            $staff->delete();
+
+            return redirect()->back()->with('delete', 'Staff deleted successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 }

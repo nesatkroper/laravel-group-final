@@ -1,12 +1,16 @@
 <x-layout>
-  <form action="{{ route('student.store') }}" method="post">
+  <form
+    action="{{ route('student.store') }}"
+    method="post"
+    enctype="multipart/form-data"
+  >
     @csrf
     <div class="card card-success card-outline mb-4">
       <div class="card-header">
         <div class="card-title">{{ __("student.add") }}</div>
       </div>
       <div class="card-body">
-        <!--  -->
+        <!--   -->
         <div class="d-flex gap-2">
           <div class="mb-3 w-100">
             <label for="basic-url" class="form-label">{{
@@ -75,10 +79,10 @@
               <div class="w-100">
                 <select class="form-select" name="gender" required>
                   <option value="male" selected>
-                    {{ __("student.m") }}
+                    {{ __("student.male") }}
                   </option>
                   <option value="female">
-                    {{ __("student.f") }}
+                    {{ __("student.female") }}
                   </option>
                 </select>
               </div>
@@ -131,10 +135,10 @@
               <div class="w-100">
                 <select class="form-select" name="degree_type" required>
                   <option value="bachelor" selected>
-                    {{ __("student.ba") }}
+                    {{ __("student.bachelor") }}
                   </option>
                   <option value="asscoiate">
-                    {{ __("student.as") }}
+                    {{ __("student.associate") }}
                   </option>
                 </select>
               </div>
@@ -170,7 +174,7 @@
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">$</span>
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 placeholder="600"
                 name="annual"
@@ -245,7 +249,7 @@
                   type="radio"
                   name="grade"
                   id="gridRadios1"
-                  value="pass"
+                  value="passed"
                   checked
                 />
                 <label class="form-check-label" for="gridRadios1">
@@ -258,7 +262,7 @@
                   type="radio"
                   name="grade"
                   id="gridRadios2"
-                  value="faile"
+                  value="failed"
                 />
                 <label class="form-check-label" for="gridRadios2">
                   {{ __("student.faile") }}
@@ -300,7 +304,12 @@
               __("student.payment")
             }}</label>
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" name="payment" />
+              <input
+                type="checkbox"
+                class="form-check-input"
+                value="complete"
+                name="payment"
+              />
               <label class="form-check-label" for="exampleCheck1">{{
                 __("student.payment")
               }}</label>

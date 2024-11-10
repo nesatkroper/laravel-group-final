@@ -41,7 +41,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('staff.index') }}" class="nav-link">
             <i class="nav-icon bi bi-person"></i>
             <p>Staff</p>
           </a>
@@ -53,24 +53,18 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('staff.create') }}" class="nav-link">
+          <a href="{{ route('cate.index') }}" class="nav-link">
             <i class="nav-icon bi bi-people"></i>
-            <p>{{ __("student.stu") }}</p>
+            <p>{{ __("cate.cate") }}</p>
           </a>
         </li>
-        <li class="position-absolute bottom-0">
-          <form action="{{ route('logout') }}" method="post">
-            @csrf
-            <button
-              type="submit"
-              class="btn btn-danger d-flex justify-content-center align-items-center gap-4 mb-2"
-              style="width: 230px"
-            >
-              <i class="nav-icon bi bi-box-arrow-left"></i>
-              Logout
-            </button>
-          </form>
+        <li class="nav-item">
+          <a href="{{ route('staff.index') }}" class="nav-link">
+            <i class="nav-icon bi bi-people"></i>
+            <p>{{ __("staff.staff") }}</p>
+          </a>
         </li>
+        <li class="position-absolute bottom-0"></li>
       </ul>
     </nav>
   </div>
