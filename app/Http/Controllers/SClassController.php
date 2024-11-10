@@ -54,17 +54,31 @@ class SClassController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SClass $sClass)
+    public function edit($sClass)
     {
         //
+        $class = SClass::findOrFail($sClass);
+        return view('class.edit', compact('class'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SClass $sClass)
+    public function update(Request $request,  $sClass)
     {
         //
+        try {
+            $class = SClass::findOrFail($sClass);
+            $class->update([
+                'name' => $request->name,
+                'code' => $request->code,
+                'des' => $request->des,
+            ]);
+
+            return redirect()->route('cate.index')->with('create', 'Class created successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**

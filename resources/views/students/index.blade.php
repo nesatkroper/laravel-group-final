@@ -71,7 +71,7 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Option
+                  {{ __("global.option") }}
                 </button>
                 <ul class="dropdown-menu">
                   <li class="d-flex flex-row">

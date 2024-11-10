@@ -50,7 +50,7 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Option
+                      {{ __("global.option") }}
                     </button>
                     <ul class="dropdown-menu">
                       <li>
@@ -142,20 +142,20 @@
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Option
+                      {{ __("global.option") }}
                     </button>
                     <ul class="dropdown-menu">
                       <li>
                         <a
                           class="dropdown-item"
-                          href="{{route('dep.edit', $row->class_id)}}"
+                          href="{{route('dep.edit', $row->department_id)}}"
                           ><i class="bi bi-pencil pe-2 text-sm"></i>Edit
                           Information</a
                         >
                       </li>
                       <li>
                         <form
-                          action="{{route('dep.destroy', $row->class_id)}}"
+                          action="{{route('dep.destroy', $row->department_id)}}"
                           method="post"
                         >
                           @csrf @method('DELETE')

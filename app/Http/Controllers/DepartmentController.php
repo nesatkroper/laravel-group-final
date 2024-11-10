@@ -21,6 +21,7 @@ class DepartmentController extends Controller
     public function create()
     {
         //
+        return view('department.create');
     }
 
     /**
@@ -29,6 +30,17 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         //
+        try {
+            Department::create([
+                'name' => $request->name,
+                'code' => $request->code,
+                'des' => $request->des,
+            ]);
+
+            return redirect()->route('cate.index')->with('create', 'Class created successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
@@ -42,9 +54,11 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Department $department)
+    public function edit($department)
     {
         //
+        $dep = Department::findOrFail($department);
+        return view('department.edit', compact('dep'));
     }
 
     /**
@@ -53,6 +67,17 @@ class DepartmentController extends Controller
     public function update(Request $request, Department $department)
     {
         //
+        try {
+            $dep = Department::findOrFail($department);
+            $dep->update([
+                'name' => $request->name,
+                'code' => $request->code,
+                'des' => $request->des,
+            ]);
+            return redirect()->route('cate.index')->with('create', 'Class created successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**

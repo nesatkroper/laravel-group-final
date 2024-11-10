@@ -6,4 +6,5 @@ return [
   'edit' => 'Edit Information',
   'nodata' => "No Data 😢",
   'action' => 'Action',
+  'option' => 'Options',
 ];

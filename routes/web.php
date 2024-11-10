@@ -28,12 +28,12 @@ ro::group(['middleware' => ['auth', 'verified']], function () {
     // ! for staff routes
     ro::resource('/staff', StaffController::class);
 
+    //  ! for category routes
+    ro::resource('/cate', CategoryController::class);
+
     //  ! for class routes
     ro::resource('/class', SClassController::class);
 
     // ! for department routes
     ro::resource('/dep', DepartmentController::class);
-
-    //  ! for category routes
-    ro::resource('/cate', CategoryController::class);
 });
