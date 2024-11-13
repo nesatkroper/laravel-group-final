@@ -3,8 +3,14 @@
 return [
   'submit' => 'Submit',
   'cancel' => 'Cancel',
-  'edit' => 'Edit Information',
   'nodata' => "No Data 😢",
   'action' => 'Action',
   'option' => 'Options',
+  'category'=> 'Category',
+  'Staffs'=> 'staffs',
+  'action'=> 'Action',
+  'option' => 'Options',
+  'view' => 'View Information',
+  'edit' => 'Edit Information',
+  'delete' => 'Delete Loan',
 ];

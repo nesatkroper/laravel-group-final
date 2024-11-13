@@ -1,11 +1,11 @@
 <?php
 
 return [
-  'class' => 'Class',
-  'dep' => 'Department',
-  'addc' => 'Add Class',
-  'addd' => 'Add Department',
-  'name' => 'Name',
-  'code' => 'Code',
-  'des' => 'Description',
+  'class' => 'ថ្នាក់',
+  'dep' => 'នាយកដ្ឋាន',
+  'addc' => 'បន្ថែមថ្នាក់',
+  'addd' => 'បន្ថែមនាយកដ្ឋាន',
+  'name' => 'ឈ្មោះ',
+  'code' => 'កូដ',
+  'des' => 'ការពិពណ៌នា',
 ];

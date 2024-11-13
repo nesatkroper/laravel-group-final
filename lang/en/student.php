@@ -34,7 +34,6 @@ return [
   'faile' => "Failed",
   'gyear' => "Greaded Year",
   'glevel' => "Graded Level",
-
   'annual' => "Annual",
   'payment' => "Payment",
   'complete' => "Complete",

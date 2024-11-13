@@ -75,18 +75,14 @@
                 </button>
                 <ul class="dropdown-menu">
                   <li class="d-flex flex-row">
-                    <a class="dropdown-item" href=""
-                      ><i class="bi bi-search pe-2 text-sm"></i>View
-                      Information</a
-                    >
+                    <a class="dropdown-item" href="">
+                      <i class="bi bi-search pe-2 text-sm"></i>{{ __("global.view") }}
+                  </a>
                   </li>
                   <li>
-                    <a
-                      class="dropdown-item"
-                      href="{{route('student.edit', $row->student_id)}}"
-                      ><i class="bi bi-pencil pe-2 text-sm"></i>Edit
-                      Information</a
-                    >
+                    <a class="dropdown-item" href="{{ route('student.edit', $row->student_id) }}">
+                      <i class="bi bi-pencil pe-2 text-sm"></i>{{ __("global.edit") }}
+                  </a>
                   </li>
                   <li>
                     <form
@@ -95,8 +91,8 @@
                     >
                       @csrf @method('DELETE')
                       <button class="dropdown-item text-danger" type="submit">
-                        <i class="bi bi-trash pe-2 text-sm"></i>Delete Loan
-                      </button>
+                        <i class="bi bi-trash pe-2 text-sm"></i>{{ __("global.delete") }}
+                    </button>
                     </form>
                   </li>
                 </ul>

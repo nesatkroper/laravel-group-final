@@ -17,11 +17,11 @@ class CategoryController extends Controller
         //
         $class = SClass::orderBy('created_at', 'asc')->get();
         $department = Department::orderBy('created_at', 'asc')->get();
-        // return view('category.index', compact(['class', 'department']));
-        return response()->json([
-            'msg' => 'success',
-            'data' => $class
-        ]);
+        return view('category.index', compact(['class', 'department']));
+        // return response()->json([
+        //     'msg' => 'success',
+        //     'data' => $class
+        // ]);
     }
 
     /**

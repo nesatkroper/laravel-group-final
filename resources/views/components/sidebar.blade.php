@@ -55,13 +55,13 @@
         <li class="nav-item">
           <a href="{{ route('cate.index') }}" class="nav-link">
             <i class="nav-icon bi bi-people"></i>
-            <p>{{ __("cate.cate") }}</p>
+            <p>{{ __("global.category") }}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('staff.index') }}" class="nav-link">
             <i class="nav-icon bi bi-people"></i>
-            <p>{{ __("staff.staff") }}</p>
+            <p>{{ __("global.Staffs") }}</p>
           </a>
         </li>
         <li class="position-absolute bottom-0"></li>
