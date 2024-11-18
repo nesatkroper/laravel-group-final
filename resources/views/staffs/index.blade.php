@@ -32,13 +32,13 @@
             <th>{{ __("staff.image") }}</th>
             <th>{{ __("staff.name") }}</th>
             <th>{{ __("staff.gender") }}</th>
-            <th>{{ __("staff.dob") }}</th>
+            <th class="d-none d-xl-table-cell">{{ __("staff.dob") }}</th>
             <th>{{ __("staff.phone") }}</th>
-            <th>{{ __("staff.email") }}</th>
+            <th class="d-none d-xl-table-cell">{{ __("staff.email") }}</th>
             <th>{{ __("staff.department") }}</th>
             <th>{{ __("staff.salary") }}</th>
             <th>{{ __("staff.payment") }}</th>
-            <th>{{ __("staff.status") }}</th>
+            <th class="d-none d-xl-table-cell">{{ __("staff.status") }}</th>
             <th>{{ __("staff.action") }}</th>
           </tr>
         </thead>
@@ -56,13 +56,15 @@
             </td>
             <td>{{$row->fname.' '. $row->lname}}</td>
             <td>{{ __("staff.$row->gender") }}</td>
-            <td>{{$row->dob}}</td>
+            <td class="d-none d-xl-table-cell">{{$row->dob}}</td>
             <td>+855 {{ $row->phone }}</td>
-            <td>{{ $row->email }}</td>
+            <td class="d-none d-xl-table-cell">{{ $row->email }}</td>
             <td>{{ __("staff.$row->department") }}</td>
             <td>$ {{number_format($row->salary, 2)}}</td>
             <td>{{ __("staff.$row->payment") }}</td>
-            <td>{{ __("staff.$row->status") }}</td>
+            <td class="d-none d-xl-table-cell">
+              {{ __("staff.$row->status") }}
+            </td>
             <td>
               <div class="dropdown-center">
                 <button

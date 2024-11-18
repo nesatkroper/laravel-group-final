@@ -101,7 +101,7 @@
               __("student.phone")
             }}</label>
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">+855</span>
+              <span class="input-group-text">+855</span>
               <input
                 type="number"
                 class="form-control"
@@ -172,7 +172,7 @@
               __("student.annual")
             }}</label>
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">$</span>
+              <span class="input-group-text">$</span>
               <input
                 type="number"
                 class="form-control"
@@ -180,7 +180,7 @@
                 name="annual"
                 required
               />
-              <span class="input-group-text" id="basic-addon1">.00</span>
+              <span class="input-group-text">.00</span>
             </div>
           </div>
           <div class="mb-3 w-100">
@@ -252,7 +252,6 @@
                   class="form-check-input"
                   type="radio"
                   name="grade"
-                  id="gridRadios1"
                   value="passed"
                   checked
                 />
@@ -265,7 +264,6 @@
                   class="form-check-input"
                   type="radio"
                   name="grade"
-                  id="gridRadios2"
                   value="failed"
                 />
                 <label class="form-check-label" for="gridRadios2">

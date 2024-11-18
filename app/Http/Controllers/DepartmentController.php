@@ -83,8 +83,16 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Department $department)
+    public function destroy($department)
     {
         //
+        try {
+            $dep = Department::findOrFail($department);
+            $dep->delete();
+
+            return redirect()->back()->with('delete', 'Department deleted successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StudentPrimaryInfoController;
 use App\Http\Controllers\SClassController;
+use App\Http\Controllers\StudentInfoController;
 use Illuminate\Support\Facades\Route as ro;
 
 ro::get('/', function () {
@@ -36,4 +37,11 @@ ro::group(['middleware' => ['auth', 'verified']], function () {
 
     // ! for department routes
     ro::resource('/dep', DepartmentController::class);
+
+    // ! for student infomation routes
+    ro::controller(StudentInfoController::class)->group(function () {
+        ro::get('/info-payment', 'studentPayment')->name('info-payment');
+        ro::get('/info-score', 'studentScore')->name('info-score');
+        ro::get('/info-attendance', 'studentAttendance')->name('info-attendace');
+    });
 });

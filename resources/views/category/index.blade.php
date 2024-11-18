@@ -1,5 +1,5 @@
 <x-layout>
-  <div class="row px-2">
+  <div class="row px-1">
     <div class="col-6">
       @if(session('create'))
       <div class="alert alert-success">

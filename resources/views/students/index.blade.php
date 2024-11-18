@@ -1,7 +1,9 @@
 <x-layout>
-  <a href="{{ route('student.create') }}" class="btn btn-success mb-3">{{
-    __("student.add")
-  }}</a>
+  <div class=" d-flex justify-content-between">
+    <a href="{{ route('student.create') }}" class="btn btn-success mb-3">{{
+      __("student.add")
+      }}</a>
+  </div>
   @if(session('create'))
   <div class="alert alert-success">
     {{ session("create") }}
@@ -33,12 +35,12 @@
             <th>{{ __("student.khname") }}</th>
             <th>{{ __("student.enname") }}</th>
             <th>{{ __("student.gender") }}</th>
-            <th>{{ __("student.phone") }}</th>
-            <th>{{ __("student.degree") }}</th>
+            <th class="d-none d-xl-table-cell">{{ __("student.phone") }}</th>
+            <th class="d-none d-xl-table-cell">{{ __("student.degree") }}</th>
             <th>{{ __("student.subject") }}</th>
             <th>{{ __("student.annual") }}</th>
             <th>{{ __("student.payment") }}</th>
-            <th>{{ __("student.status") }}</th>
+            <th class="d-none d-xl-table-cell">{{ __("student.status") }}</th>
             <th>{{ __("student.action") }}</th>
           </tr>
         </thead>
@@ -47,52 +49,45 @@
           <tr>
             <td>{{$loop->iteration}}</td>
             <td>
-              <img
-                src="{{$row->image ? asset('uploads/student/'.$row->image) : asset('images/defaul.webp')}}"
-                alt="image"
-                style="height: 60px"
-                class="rounded-2"
-              />
+              <img src="{{$row->image ? asset('uploads/student/'.$row->image) : asset('images/defaul.webp')}}"
+                alt="image" style="height: 60px" class="rounded-2" />
             </td>
             <td>{{$row->kh_fname.' '. $row->kh_lname}}</td>
             <td>{{$row->en_fname.' '. $row->en_lname}}</td>
             <td>{{ __("student.$row->gender") }}</td>
-            <td>+855 {{$row->phone}}</td>
-            <td>{{ __("student.$row->degree_type") }}</td>
+            <td class="d-none d-xl-table-cell">+855 {{$row->phone}}</td>
+            <td class="d-none d-xl-table-cell">
+              {{ __("student.$row->degree_type") }}
+            </td>
             <td>{{ __("student.$row->subject") }}</td>
             <td>$ {{number_format($row->annual, 2)}}</td>
             <td>{{ __("student.$row->payment") }}</td>
-            <td>{{ __("student.$row->status") }}</td>
+            <td class="d-none d-xl-table-cell">
+              {{ __("student.$row->status") }}
+            </td>
             <td>
               <div class="dropdown-center">
-                <button
-                  class="btn btn-secondary btn-sm dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
                   {{ __("global.option") }}
                 </button>
                 <ul class="dropdown-menu">
                   <li class="d-flex flex-row">
-                    <a class="dropdown-item" href="">
+                    <a class="dropdown-item" href="{{route('student.show', $row->student_id)}}">
                       <i class="bi bi-search pe-2 text-sm"></i>{{ __("global.view") }}
-                  </a>
+                    </a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="{{ route('student.edit', $row->student_id) }}">
                       <i class="bi bi-pencil pe-2 text-sm"></i>{{ __("global.edit") }}
-                  </a>
+                    </a>
                   </li>
                   <li>
-                    <form
-                      action="{{route('student.destroy', $row->student_id)}}"
-                      method="post"
-                    >
+                    <form action="{{route('student.destroy', $row->student_id)}}" method="post">
                       @csrf @method('DELETE')
                       <button class="dropdown-item text-danger" type="submit">
                         <i class="bi bi-trash pe-2 text-sm"></i>{{ __("global.delete") }}
-                    </button>
+                      </button>
                     </form>
                   </li>
                 </ul>

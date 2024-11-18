@@ -5,14 +5,12 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
-    // 'providers' => [
-    //     Intervention\Image\ImageServiceProvider::class,
-    //     Spatie\LaravelImageOptimizer\ImageOptimizerServiceProvider::class,
-    // ],
-    // 'aliases' => [
-    //     'Image' => Intervention\Image\Facades\Image::class,
-    // ],
-
+    'providers' => [
+        Intervention\Image\ImageServiceProvider::class,
+    ],
+    'aliases' => [
+        'Image' => Intervention\Image\Facades\Image::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------

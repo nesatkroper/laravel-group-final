@@ -12,12 +12,6 @@
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.css') }}" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
-      integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q="
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
       href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css"
     />
     <link
@@ -31,6 +25,13 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
       integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI="
       crossorigin="anonymous"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cdn.oaistatic.com/assets/favicon-dark-32x32-gt5kfzyp.webp"
+      media="(prefers-color-scheme: dark)"
     />
     <style>
       * {

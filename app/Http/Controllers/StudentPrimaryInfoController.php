@@ -80,10 +80,12 @@ class StudentPrimaryInfoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(StudentPrimaryInfo $studentPrimaryInfo)
+    public function show($studentPrimaryInfo)
     {
         //
-
+        $student = StudentPrimaryInfo::findOrFail($studentPrimaryInfo);
+        // dd($student);
+        return view('student-info.detail', compact('student'));
     }
 
     /**

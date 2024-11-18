@@ -90,6 +90,8 @@ class SClassController extends Controller
         try {
             $class = SClass::findOrFail($sClass);
             $class->delete();
+
+            return redirect()->back()->with('delete', 'Class deleted successfully');
         } catch (\Exception $e) {
             dd($e);
         }
