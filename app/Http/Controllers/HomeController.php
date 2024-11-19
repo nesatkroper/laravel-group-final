@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Staff;
+use App\Models\StudentPrimaryInfo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $students = StudentPrimaryInfo::count();
+        $staffs = Staff::count();
+        $actives = StudentPrimaryInfo::where('status', 'active')->count();
+        $inactives = StudentPrimaryInfo::where('status', 'inactive')->count();
+
+        return view('home', compact(['students', 'staffs', 'actives', 'inactives']));
     }
 }

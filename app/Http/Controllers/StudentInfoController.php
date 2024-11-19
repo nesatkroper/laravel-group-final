@@ -8,7 +8,8 @@ class StudentInfoController extends Controller
 {
     public function studentPayment()
     {
-        return view('student-info.payment');
+        $students = [];
+        return view('student-info.payment', compact('students'));
     }
     public function studentScore()
     {

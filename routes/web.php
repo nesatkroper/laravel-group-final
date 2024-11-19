@@ -7,6 +7,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StudentPrimaryInfoController;
 use App\Http\Controllers\SClassController;
 use App\Http\Controllers\StudentInfoController;
+use App\Http\Controllers\StudentPaymentController;
 use Illuminate\Support\Facades\Route as ro;
 
 ro::get('/', function () {
@@ -43,5 +44,10 @@ ro::group(['middleware' => ['auth', 'verified']], function () {
         ro::get('/info-payment', 'studentPayment')->name('info-payment');
         ro::get('/info-score', 'studentScore')->name('info-score');
         ro::get('/info-attendance', 'studentAttendance')->name('info-attendace');
+    });
+
+    // ! for student payment
+    ro::controller(StudentPaymentController::class)->group(function () {
+        ro::post('/payment-search', 'search')->name('payment-search');
     });
 });
