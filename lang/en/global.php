@@ -13,4 +13,10 @@ return [
   'view' => 'View Information',
   'edit' => 'Edit Information',
   'delete' => 'Delete Loan',
+  'attendance' => 'Attendance',
+  'student List' => 'Student List',
+  'score' => 'Score',
+  'payment' => 'Payment',
+  'loan' => 'Loan',
+
 ];
