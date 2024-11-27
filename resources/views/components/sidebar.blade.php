@@ -26,25 +26,25 @@
             <li class="nav-item">
               <a href="{{ route('student.index') }}" class="nav-link">
                 <i class="nav-icon bi bi-circle"></i>
-                <p>{{__("Student List")}}</p>
+                <p>{{__("global.student List")}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('info-payment')}}" class="nav-link">
                 <i class="nav-icon bi bi-circle"></i>
-                <p>{{__("Payment")}}</p>
+                <p>{{__("global.payment")}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('info-score')}}" class="nav-link">
                 <i class="nav-icon bi bi-circle"></i>
-                <p>{{__("Score")}}</p>
+                <p>{{__("global.score")}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('info-attendace')}}" class="nav-link">
                 <i class="nav-icon bi bi-circle"></i>
-                <p>{{__("Attendance")}}</p>
+                <p>{{__("global.attendance")}}</p>
               </a>
             </li>
           </ul>
