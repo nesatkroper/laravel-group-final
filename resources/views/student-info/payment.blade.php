@@ -19,7 +19,6 @@
                 <thead>
                     <tr>
                         <th>{{ __("No") }}</th>
-                        <th>{{ __("KH Name") }}</th>
                         <th>{{ __("student.enname") }}</th>
                         <th>{{ __("student.phone") }}</th>
                         <th>{{ __("student.class") }}</th>
@@ -31,7 +30,6 @@
                     @foreach($students as $row)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$row->kh_fname." ".$row->kh_lname}}</td>
                         <td>{{$row->en_fname." ".$row->en_lname}}</td>
                         <td>+855 {{$row->phone}}</td>
                         <td>{{strtoupper($row->class)}}</td>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Major extends Model
 {
     //
-    protected $primaryKey = '';
+    protected $primaryKey = 'major_id';
     protected $fillable = [
         'name',
         'code',

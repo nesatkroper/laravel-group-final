@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Department;
+use App\Models\Major;
 use App\Models\SClass;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,9 @@ class CategoryController extends Controller
         //
         $class = SClass::orderBy('created_at', 'asc')->get();
         $department = Department::orderBy('created_at', 'asc')->get();
-        return view('category.index', compact(['class', 'department']));
+        $major = Major::orderBy('created_at', 'asc')->get();
+        $other = [];
+        return view('category.index', compact(['class', 'department', 'major', 'other']));
         // return response()->json([
         //     'msg' => 'success',
         //     'data' => $class

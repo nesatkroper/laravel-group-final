@@ -8,15 +8,14 @@ class StudentInfoController extends Controller
 {
     public function studentPayment()
     {
-        $students = [];
-        return view('student-info.payment', compact('students'));
+        return view('student-info.index-payment');
     }
     public function studentScore()
     {
-        return view('student-info.score');
+        return view('student-info.index-score');
     }
     public function studentAttendance()
     {
-        return view('student-info.attendance');
+        return view('student-info.index-attendance');
     }
 }

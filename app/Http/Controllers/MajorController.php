@@ -21,6 +21,7 @@ class MajorController extends Controller
     public function create()
     {
         //
+        return view('major.create');
     }
 
     /**
@@ -53,24 +54,45 @@ class MajorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Major $major)
+    public function edit($major)
     {
         //
+        $major = Major::findOrFail($major);
+        return view('major.edit', compact('major'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Major $major)
+    public function update(Request $request,  $major)
     {
         //
+        try {
+            $maj = Major::findOrFail($major);
+            $maj->update([
+                'name' => $request->name,
+                'code' => $request->code,
+                'des' => $request->des,
+            ]);
+            return redirect()->route('cate.index')->with('create', 'Major created successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Major $major)
+    public function destroy($major)
     {
         //
+        try {
+            $maj = Major::findOrFail($major);
+            $maj->delete();
+
+            return redirect()->back()->with('delete', 'Department deleted successfully');
+        } catch (\Exception $e) {
+            dd($e);
+        }
     }
 }

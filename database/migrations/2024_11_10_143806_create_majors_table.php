@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('majors', function (Blueprint $table) {
             $table->id('major_id');
+            $table->string("name");
+            $table->string("code")->nullable();
+            $table->string("des")->nullable();
             $table->timestamps();
         });
     }
