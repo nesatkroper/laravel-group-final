@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LanguageController;
@@ -38,6 +39,9 @@ ro::group(['middleware' => ['auth', 'verified']], function () {
 
     // ! for department routes
     ro::resource('/dep', DepartmentController::class);
+
+    // ! for account routes
+    ro::resource('/acc', AccountController::class);
 
     // ! for student infomation routes
     ro::controller(StudentInfoController::class)->group(function () {

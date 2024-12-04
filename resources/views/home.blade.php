@@ -64,4 +64,5 @@
             </div>
         </div>
     </div>
+    <p>{{Auth::user()->role}}</p>
 </x-layout>
