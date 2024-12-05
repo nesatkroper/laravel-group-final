@@ -22,33 +22,44 @@
                         </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form>
+                    <form action="{{route('acc.store')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="type" value="staff">
                         <div class="modal-body">
                             <label for="basic-url" class="form-label fw-bold">{{__('Select Staff or Lecture')}}</label>
                             <div class="input-group mb-3">
-                                <select class="form-select">
+                                <select class="form-select" name="name_id">
                                     <option selected>Choose...</option>
                                     @forelse($staffs as $row)
-                                    <option value="{{$row->fname . ' '. $row->lname}}">{{$row->fname . ' '.
+                                    <!-- <option value="{{$row->fname . ' '. $row->lname}}">{{$row->fname . ' '.
+                                        $row->lname}}</option> -->
+                                    <option value="{{$row->staff_id}}">{{$row->fname . ' '.
                                         $row->lname}}</option>
                                     @empty
                                     <option disabled>{{__('No Data')}}</option>
                                     @endforelse
                                 </select>
                             </div>
+                            <label for="basic-url" class="form-label fw-bold">{{__('Select Role')}}</label>
+                            <div class="input-group mb-3">
+                                <select class="form-select" name="role">
+                                    <option selected value="staff">Staff</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
                             <label for="basic-url" class="form-label fw-bold">{{__('Email')}}</label>
                             <div class="input-group mb-3">
-                                <input type="email" class="form-control" placeholder="someone@example.com">
+                                <input type="email" class="form-control" name="email" placeholder="someone@example.com">
                             </div>
                             <label for="basic-url" class="form-label fw-bold">{{__('Password')}}</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="must be strong">
+                                <input type="text" class="form-control" name="password" placeholder="must be strong">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
                                 data-bs-dismiss="modal">{{__('Close')}}</button>
-                            <button type="button" class="btn btn-success">{{__('Submit')}}</button>
+                            <button type="submit" class="btn btn-success">{{__('Submit')}}</button>
                         </div>
                     </form>
                 </div>
@@ -64,15 +75,16 @@
                         </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form>
+                    <form action="{{route('acc.store')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="type" value="user">
                         <div class="modal-body">
                             <label for="basic-url" class="form-label fw-bold">{{__('Select Student')}}</label>
                             <div class="input-group mb-3">
-                                <select class="form-select">
+                                <select class="form-select" name="name_id">
                                     <option selected>Choose...</option>
                                     @forelse($student as $row)
-                                    <option value="{{$row->en_fname . ' '.
-                                        $row->en_lname}}">{{$row->en_fname . ' '.
+                                    <option value="{{$row->student_id}}">{{$row->en_fname . ' '.
                                         $row->en_lname}}</option>
                                     @empty
                                     <option disabled>{{__('No Data')}}</option>
@@ -81,17 +93,17 @@
                             </div>
                             <label for="basic-url" class="form-label fw-bold">{{__('Email')}}</label>
                             <div class="input-group mb-3">
-                                <input type="email" class="form-control" placeholder="someone@example.com">
+                                <input type="email" class="form-control" name="email" placeholder="someone@example.com">
                             </div>
                             <label for="basic-url" class="form-label fw-bold">{{__('Password')}}</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="must be strong">
+                                <input type="text" class="form-control" name="password" placeholder="must be strong">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
                                 data-bs-dismiss="modal">{{__('Close')}}</button>
-                            <button type="button" class="btn btn-success">{{__('Submit')}}</button>
+                            <button type="submit" class="btn btn-success">{{__('Submit')}}</button>
                         </div>
                     </form>
                 </div>

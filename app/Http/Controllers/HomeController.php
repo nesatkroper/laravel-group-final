@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use App\Models\StudentPrimaryInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -30,6 +31,11 @@ class HomeController extends Controller
         $actives = StudentPrimaryInfo::where('status', 'active')->count();
         $inactives = StudentPrimaryInfo::where('status', 'inactive')->count();
 
-        return view('home', compact(['students', 'staffs', 'actives', 'inactives']));
+        $acc = null;
+        if (Auth::user()->role == 'user') {
+            $acc = StudentPrimaryInfo::findOrFail(Auth::user()->info);
+        }
+
+        return view('home', compact(['students', 'staffs', 'actives', 'inactives', 'acc']));
     }
 }

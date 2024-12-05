@@ -22,5 +22,7 @@ class Staff extends Model
         'address',
         'payment',
         'status',
+        'isAcc',
+        'isDelete'
     ];
 }

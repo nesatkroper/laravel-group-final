@@ -7,6 +7,7 @@ use App\Models\Staff;
 use App\Models\StudentPrimaryInfo;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -54,6 +55,37 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         //
+        if ($request->type == "staff") {
+            $acc = Staff::find($request->name_id);
+            $name = $acc->fname . ' ' . $acc->lname;
+            $role = $request->role;
+        } else {
+            $acc = StudentPrimaryInfo::findOrFail($request->name_id);
+            $name = $acc->en_fname . ' ' . $acc->en_lname;
+            $role = 'user';
+        }
+
+        $acc->update([
+            'isAcc' => true
+        ]);
+
+        User::create([
+            'name' => $name,
+            'role' => $role,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'info' => $request->name_id
+        ]);
+
+        // $acc = 
+
+        // if($new){
+
+        // }
+
+        return redirect()
+            ->route('acc.index')
+            ->with('create', 'Account create successfully');
     }
 
     /**
@@ -86,5 +118,6 @@ class AccountController extends Controller
     public function destroy(Account $account)
     {
         //
+
     }
 }

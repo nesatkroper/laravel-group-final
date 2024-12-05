@@ -1,6 +1,7 @@
 <x-layout>
+    @if(Auth::user()->role == 'admin')
     <div class="row">
-        <div class="col-lg-3 col-6">
+        <div class="col-xl-3 col-6">
             <div class="small-box text-bg-primary">
                 <div class="inner">
                     <h3>{{$staffs}} staffs</h3>
@@ -15,7 +16,7 @@
                     More info <i class="bi bi-link-45deg"></i> </a>
             </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-xl-3 col-6">
             <div class="small-box text-bg-success">
                 <div class="inner">
                     <h3>{{$students}} students<sup class="fs-5"></sup></h3>
@@ -30,7 +31,7 @@
                     More info <i class="bi bi-link-45deg"></i> </a>
             </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-xl-3 col-6">
             <div class="small-box text-bg-warning">
                 <div class="inner">
                     <h3>{{$actives}} students</h3>
@@ -45,7 +46,7 @@
                     More info <i class="bi bi-link-45deg"></i> </a>
             </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-xl-3 col-6">
             <div class="small-box text-bg-danger">
                 <div class="inner">
                     <h3>{{$inactives}} students</h3>
@@ -64,5 +65,23 @@
             </div>
         </div>
     </div>
-    <p>{{Auth::user()->role}}</p>
+    @elseif(Auth::user()->role == 'user')
+    <div class="row">
+        <p class="fs-4 fw-bold">Personal infor</p>
+        <hr>
+        <div class="col-6 d-flex flex-column">
+            <img src="{{asset('uploads/student/'.$acc->image)}}" alt="profile"
+                class="w-50 rounded-4 mb-3 border border-5 {{$acc->status == " active" ? "border-danger"
+                : "border-success" }}">
+            <div class="d-flex gap-2">
+                <p class="fs-5 ">{{__('Name: ')}}</p>
+                <p class="fs-5 fw-bold">{{__($acc->en_fname . ' '. $acc->en_lname)}}</p>
+            </div>
+        </div>
+        <!-- <div class="col-6 d-flex s">
+            <p class="fs-5 ">{{__('Name: ')}}</p>
+            <p class="fs-5 fw-bold">{{__($acc->en_fname . ' '. $acc->en_lname)}}</p>
+        </div> -->
+    </div>
+    @endif
 </x-layout>

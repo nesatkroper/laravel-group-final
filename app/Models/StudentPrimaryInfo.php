@@ -36,6 +36,8 @@ class StudentPrimaryInfo extends Model
         'class',
         'payment',
         'status',
+        'isAcc',
+        'isDelete'
     ];
 
     public function studentSecondaryInfo()
